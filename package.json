@@ -1,0 +1,37 @@
+{
+  "name": "file-upload-react-node",
+  "version": "1.0.0",
+  "description": "Single file upload by React JS and Node JS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd dist && SET NODE_ENV=development&&node bin/www",
+    "client": "cd client && yarn build && yarn start",
+    "build": "babel server/ -d dist/",
+    "dev": "concurrently \"yarn run build\" \"yarn run server\" \"yarn run client\"",
+    "start": "yarn run dev",
+    "lint": "eslint .",
+    "lint:errors": "eslint . --quit"
+  },
+  "repository": "https://github.com/imvsharma/file-upload-react-node.git",
+  "author": "Vaibhav Sharma <vsvaibhav2016@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.2",
+    "concurrently": "^3.5.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.3",
+    "find-config": "^1.0.0",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "eslint": "^5.13.0"
+  }
+}
