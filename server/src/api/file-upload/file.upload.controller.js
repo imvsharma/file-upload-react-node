@@ -1,7 +1,5 @@
-const upload = require('../../../utils/file-upload');
-
-
-// import fileModel from './file-upload.dao';
+import upload from '../../../utils/file-upload';
+import fileModel from './file-upload.dao';
 
 
 
@@ -19,8 +17,22 @@ const fileService = {
       if (err) {
         res.send({ message: 'File not uploaded' });
       }
-      console.log(req.file)
-      res.status(200).send(req.file)
+      console.log(req.file);
+      const displayPic = req.file.originalname;
+      let originalname = req.file.originalname;
+      originalname = originalname.slice(0, originalname.length - 4);
+
+      const file = new fileModel({
+        displayPic: originalname,
+        filepath: `./uploads/${displayPic}`,
+      });
+
+      file.save((err, response) => {
+        if (err) {
+          res.json(err);
+        }
+        res.json(response);
+      });
     });
   },
 };

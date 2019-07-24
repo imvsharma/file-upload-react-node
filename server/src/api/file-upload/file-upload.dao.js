@@ -9,8 +9,8 @@ class File extends mongoose.Model {
     constructor (file) {
         super(file);
     }
-    save = () => {
-        return super.save()
+    save = (cb) => {
+        return super.save(cb);
     }
 }
 

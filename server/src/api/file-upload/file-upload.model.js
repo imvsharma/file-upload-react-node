@@ -1,7 +1,7 @@
 import {Schema} from 'mongoose';
 
 const fileSchema = new Schema({
-    filename: {
+    displayPic: {
         type: String
     },
     filepath: {
