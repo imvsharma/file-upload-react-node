@@ -5,11 +5,11 @@ import chalk from 'chalk';
 import App from '../server';
 import findConfig from 'find-config';
 
-dotenv.config({path:findConfig('.env')});
+dotenv.config({ path: findConfig('.env') });
 
 const config = require(`../config/${process.env.NODE_ENV}`);
 
-const normalizePort = (val) => {
+const normalizePort = val => {
   const port = parseInt(val, 10);
   if (isNaN(port)) {
     return val;
@@ -18,31 +18,31 @@ const normalizePort = (val) => {
     return port;
   }
   return false;
-}
+};
 
-const onError = (error) => {
+const onError = error => {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  let bind = typeof port === 'string'
+    ? `Pipe ${  port}`
+    : `Port ${  port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${bind  } requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${bind  } is already in use`);
       process.exit(1);
       break;
     default:
       throw error;
   }
-}
+};
 
 const onListening = () => {
   console.log(chalk.yellow('=========================================='));
@@ -50,9 +50,9 @@ const onListening = () => {
   console.log(chalk.yellow('=========================================='));
   const addr = server.address();
   const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-}
+    ? `pipe ${  addr}`
+    : `port ${  addr.port}`;
+};
 
 const port = normalizePort(config.port);
 App.set('port', port);
