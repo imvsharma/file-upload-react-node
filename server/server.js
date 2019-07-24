@@ -1,7 +1,7 @@
 import express, {Router} from 'express';
 import DbConnectivity from './lib/database';
-import UserRoutes from './src/api/user/user.routes';
 import appUseFunc from './utils/app-use';
+import fileRoutes from './src/api/file-upload/file-upload.routes';
 
 class App {
     app='';
@@ -18,7 +18,7 @@ class App {
     }
 
     initUserRoutes =(router) => {
-        UserRoutes(router)
+        fileRoutes(router)
     }
 
     initAppUse = () => {
