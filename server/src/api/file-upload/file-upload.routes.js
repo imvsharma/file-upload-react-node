@@ -1,11 +1,9 @@
 import fileService from './file.upload.controller';
-const multer = require('multer');
-// import fileModel from './file-upload.dao';
-const upload = multer({ dest: 'uploads/' });
+import upload from '../../../utils/file-upload';
 
 const fileRoutes = router => {
   router.get('/healthcheck', fileService.healthcheck);
-  router.post('/user/create', upload.single('filename'), fileService.create);
+  router.post('/user/create', fileService.create);
 };
 
 export default fileRoutes;
